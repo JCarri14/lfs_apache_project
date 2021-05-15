@@ -34,3 +34,16 @@ body {
 .form-card {
     width: 400px;       
 }
+
+.mem-card {
+    width: 400px;  
+    height: 600px;
+    overflow-y: auto;
+}
+
+.disk-card {
+    width: 600px;  
+    height: 600px;
+    overflow-y: auto;
+}
+
