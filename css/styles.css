@@ -1,0 +1,36 @@
+:root {
+    --primary-color: teal;
+    --secondary-color: #131416;
+}
+
+body {
+    position: absolute;
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 100%;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    height: 100vh;
+}
+
+.main__layout {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title, .form-label {
+    color: white;
+}
+
+.form-card {
+    width: 400px;       
+}
