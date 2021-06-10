@@ -33,8 +33,11 @@ printPageContent () {
     echo "<div class='main__layout container'>"
 }
 
+
+
+
 printMemTableData () {
-    mem_data=$(cat /proc/meminfo | awk -F: '{print "<tr>"; print "<td>" $1 "</td>"; print "<td>" $2 "</td>"; print "</tr>"}'); 
+    mem_data=$(cat /proc/meminfo | awk -F: '{print "<tr>"; print "<td>" $1 "</td>"; print "<td>" $2 "</td>"; print "</tr>"}');
     echo -e "<div class='mem-card card'>"
     echo "<table class='table table-striped'>"
     echo -e "<thead>
@@ -47,7 +50,7 @@ printMemTableData () {
 }
 
 printDiskTableData () {
-    disk_data=$(df -h | awk -F " " ' NR>1{print "<tr>"; for(i=1;i<=NF;i++) print "<td>" $i "</td>"; print "</tr>"}'); 
+    disk_data=$(df -h | awk -F " " ' NR>1{print "<tr>"; for(i=1;i<=NF;i++) print "<td>" $i "</td>"; print "</tr>"}');
     echo -e "<div class='disk-card card'>"
     echo "<table class='table table-striped'>"
     echo -e "<thead>
@@ -69,8 +72,6 @@ echo "Content-type: text/html"
 echo ""
 echo $(printPageHeaders)
 echo $(printPageContent)
-#echo $(printMemTableData)
-echo $(printDiskTableData)
+echo $(printMemTableData)
+#echo $(printDiskTableData)
 echo $(printPageEnd)
-
-

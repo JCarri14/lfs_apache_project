@@ -1,3 +1,32 @@
+import { loginFormHandler } from './form-utils.js';
+
+import { request } from "./api-utils.js";
+
+let loginForm;
+
+const PAGES = {
+  HOME,
+  LOGIN,
+  MONITOR,
+  LOGS,
+  USERS,
+  CRON_JOBS,
+  MUSIC_PLAYER
+}
+
+const state = {
+  isLoggedIn: false,
+  currentUser: null,
+  currentPage: 0,
+};
+
+window.onload = () => {
+
+  loginForm = document.getElementById("loginForm");
+  loginForm.addEventListener("submit", loginFormHandler);
+}
+
+
 particlesJS("particles-js", {
   "particles": {
     "number": {
