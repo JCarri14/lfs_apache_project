@@ -7,7 +7,7 @@ export async function request({ url, method, headers, body }) {
             body: body
         });
 
-        jsonData = await res.json();
+        const jsonData = await res.json();
         
         return {
             isSuccessful: true,

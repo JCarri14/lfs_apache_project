@@ -9,7 +9,11 @@ export async function fetchUsers() {
         method: "GET",
     });
 
-    return res.data.users;
+    if (res.isSuccessful) {
+        return res.data.users;
+    } else {
+        return [];
+    }
 }
 
 export async function createUser(name) {

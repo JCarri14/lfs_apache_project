@@ -4,7 +4,7 @@ const loginURL = "http://localhost/scripts/login.sh";
 
 export async function loginFormHandler(e) {
     e.preventDefault();
-        
+
     const user = document.getElementById("form-username").value;
     const passwd = document.getElementById("form-password").value;
     const postData = `user:${user};password:${passwd}`;
@@ -19,7 +19,13 @@ export async function loginFormHandler(e) {
         body: postData
     });
 
-    if (res.isSuccessful) {
-        
+    if (res.isSuccessful && res.data.valid) {
+        window.location.replace("http://localhost/views/dashboard.html");
+    } else if (res.isSuccessful && !res.data.valid) {
+        const errorDiv = document.getElementById("errorDiv");
+        errorDiv.innerHTML = "Login failed! Incorrect username or password";
+    } else {
+        const errorDiv = document.getElementById("errorDiv");
+        errorDiv.innerHTML = "Internal Server error!";
     }
 }
