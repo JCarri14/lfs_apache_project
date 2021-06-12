@@ -48,10 +48,13 @@ body {
 }
 
 #usersTable {
-    min-width: 300px;
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
     color: white !important;
+}
+
+#table-card {
+    min-width: 300px;
 }
 

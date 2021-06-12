@@ -1,4 +1,5 @@
 #!/bin/bash
+
 read textData;
 
 user_prev=$(echo $textData | awk -F";" '{print $1}');
@@ -9,16 +10,13 @@ pswd_prev=$(echo $textData | awk -F";" '{print $2}');
 pswd=$(echo $pswd_prev | awk -F: '{print $2}');
 #pswd="$(echo $pswd_prev | sed -e 's/[[:space:]]*$//')";
 
-isValid=$( ./check_credentials.sh "$user" "$pswd")
+isValid=$( ./check-credentials.sh "$user" "$pswd")
 
-cookieHeader=""
-
-if [ $isValid = "true" ]
-then
-    sudo -u $user logger -p local1.info "$user logged in!"
-    cookieHeader="Set-Cookie: user=$user"
+if [ $isValid = "true" ]; then
+    $(echo $user > currentUser.txt);
+    logger -p local1.info "$user logged in!"
 else
-    logger -p local1.alert "Someone tried to access as $user, but failed!"
+    logger -p local1.info "Someone tried to access as $user, but failed!"
 fi
 
 echo "Content-type: application/json"

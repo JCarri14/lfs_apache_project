@@ -4,7 +4,8 @@ const loginURL = "http://localhost/scripts/login.sh";
 
 export async function loginFormHandler(e) {
     e.preventDefault();
-
+    const errorDiv = document.getElementById("errorDiv");
+    errorDiv.innerHTML = "";
     const user = document.getElementById("form-username").value;
     const passwd = document.getElementById("form-password").value;
     const postData = `user:${user};password:${passwd}`;
@@ -25,7 +26,6 @@ export async function loginFormHandler(e) {
         const errorDiv = document.getElementById("errorDiv");
         errorDiv.innerHTML = "Login failed! Incorrect username or password";
     } else {
-        const errorDiv = document.getElementById("errorDiv");
         errorDiv.innerHTML = "Internal Server error!";
     }
 }
