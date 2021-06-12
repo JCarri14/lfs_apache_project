@@ -14,9 +14,12 @@
     <!--<div id="particles-js"></div>-->
     <div class="main">
       <div id="content-wrapper" class="main__layout container">
-        <div id="dashboardView" class="card bg-dark shadow-md">
+        <div id="table-card" class="card bg-dark shadow-md">
           <div class="card-body">
-            <h4 class="card-title text-white">Logs - Dashboard</h4>
+            <div class="d-flex my-2 align-items-center justify-content-between">
+              <h4 class="card-title text-white">Logs - Dashboard</h4>
+              <button type="button" class="btn btn-primary" onclick="history.back()">Back</button>
+            </div>
             <div id="logsTable"></div>
           </div>
       </div>

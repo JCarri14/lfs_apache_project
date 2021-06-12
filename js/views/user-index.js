@@ -22,6 +22,7 @@ async function loadData() {
     const tableDiv = document.getElementById("usersTable");
     tableDiv.innerHTML = "";
     tableDiv.innerHTML = usersTable;
+    tableDiv.removeChild(tableDiv.childNodes[0]);
 }
 
 

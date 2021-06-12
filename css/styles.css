@@ -47,7 +47,7 @@ body {
     overflow-y: auto;
 }
 
-#usersTable {
+#usersTable, #logsTable, #processTable {
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;

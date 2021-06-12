@@ -10,6 +10,7 @@ async function loadData() {
 
     const tableDiv = document.getElementById("logsTable");
     tableDiv.innerHTML = logsTable;
+    tableDiv.removeChild(tableDiv.childNodes[0]);
 }
 
 
