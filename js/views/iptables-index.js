@@ -23,7 +23,6 @@ async function loadData() {
     tables.forEach((t) => {
         tableDiv.appendChild(t);
     });
-    //tableDiv.removeChild(tableDiv.childNodes[0]);
 }
 
 function extractChains(rules) {
@@ -99,6 +98,7 @@ function createTableRow(rule) {
     return "";
 }
 
+
 async function handleRuleCreation() {
     const errorDiv = document.getElementById("errorDiv");
     const notificationDiv = document.getElementById("notificationDiv");
@@ -106,10 +106,7 @@ async function handleRuleCreation() {
     errorDiv.innerHTML = "";
     notificationDiv.innerHTML = "";
 
-    // const user = document.getElementById("add-form-username").value;
-    // const passwd = document.getElementById("add-form-password").value;
-    
-    // const res = await createUser(user, passwd);
+    // Todo: obtained inputs and make request
 
     notificationDiv.innerHTML = res.data.created ? res.data.message:"";
     errorDiv.innerHTML = (!res.data.created || !res.isSuccessful) ? res.data.message:"";
@@ -122,14 +119,7 @@ async function handleRuleRemoval() {
     errorDiv.innerHTML = "";
     notificationDiv.innerHTML = "";
 
-    // const delUser = document.getElementById("delete-form-username").value;
-
-    // const res = await removeUser(delUser);
-
-    // if (res.data) {
-    //     notificationDiv.innerHTML = res.data.deleted ? res.data.message:"";
-    //     errorDiv.innerHTML = (!res.data.deleted || !res.isSuccessful) ? res.data.message:"";
-    // }
+    // Todo: Obtain input and make request
 
     document.getElementById("delete-close-btn").click();
 }
