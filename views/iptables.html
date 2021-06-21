@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <!-- Create User Modal -->
+        <!-- Create Rule Modal -->
         <div class="modal fade" id="addForm" tabindex="-1" aria-labelledby="addFormLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -53,15 +53,45 @@
                 <button type="button" class="btn btn-danger h-full" data-bs-dismiss="modal" aria-label="Close">Close</button>
               </div>
               <div class="modal-body">
-                <div class="d-flex flex-column justify-content-start align-items-start">
-                  <div class="d-flex flex-column">
-                    <label for="add-form-username">Username</label>
-                    <input id="add-form-username" type="text" class="form-control" name="username" placeholder="Enter a name"/>
+                <div class="container justify-content-start align-items-start">
+                  <div class="row">
+                    <div class="col d-flex flex-column">
+                      <label for="add-form-rule-type">Rule Type</label>
+                      <select class="form-control" name="add-form-rule-type" id="add-form-rule-type">
+                          <option>INPUT</option>
+                          <option>FORWARD</option>
+                          <option>OUTPUT</option>
+                      </select>
+                    </div>
+                    <div class="col d-flex flex-column">
+                      <label for="add-form-target">Target Action</label>
+                      <select class="form-control" name="add-form-target" id="add-form-target">
+                        <option>ACCEPT</option>
+                        <option>DROP</option>
+                      </select>
+                    </div>
                   </div>
-                  <div class="d-flex flex-column">
-                    <label for="add-form-password">Password</label>
-                    <input id="add-form-password" type="password" class="form-control" name="password" placeholder="Enter password"/>
+                  <div class="row mt-2">
+                    <div class="col d-flex flex-column">
+                      <label for="add-form-protocol">Protocol</label>
+                      <input id="add-form-protocol" size="18" type="text" class="form-control" name="add-form-protocol" placeholder="Enter protocol"/>
+                    </div>
+                    <div class="col d-flex flex-column">
+                      <label for="add-form-port">Port</label>
+                      <input id="add-form-port" type="number" class="form-control" name="add-form-port" placeholder="Enter port"/>
+                    </div>
                   </div>
+                  <div class="row mt-2">
+                    <div class="col d-flex flex-column">
+                      <label for="add-form-origin">@Origin</label>
+                      <input id="add-form-origin" size="18" type="text" class="form-control" name="add-form-origin" placeholder="Enter origin address"/>
+                    </div>
+                    <div class="col d-flex flex-column">
+                      <label for="add-form-dst">@Destination</label>
+                      <input id="add-form-dst" size="18" type="text" class="form-control" name="add-form-dst" placeholder="Enter dst address"/>
+                    </div>
+                  </div>
+                  
                   <button id="create-btn" type="button" class="btn btn-primary mt-2 ">Create</button>
                 </div>
               </div>
@@ -73,14 +103,26 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header d-flex">
-                <h5 class="modal-title" id="deleteFormLabel">Delete User</h5>
+                <h5 class="modal-title" id="deleteFormLabel">Delete Rule</h5>
                 <button id="delete-close-btn" type="button" class="btn btn-danger h-full" data-bs-dismiss="modal" aria-label="Close">Close</button>
               </div>
               <div class="modal-body">
-                <div class="d-flex flex-column justify-content-start align-items-start">
-                  <div class="d-flex flex-column">
-                    <label for="delete-form-username">Username</label>
-                    <input id="delete-form-username" type="text" class="form-control" name="username" placeholder="Enter a name"/>
+                <div class="container justify-content-start align-items-start">
+                  <div class="row">
+                    <div class="col d-flex flex-column">
+                      <label for="delete-form-id">Rule ID</label>
+                      <input id="delete-form-id" type="text" class="form-control" name="delete-form-id" placeholder="Enter rule id"/>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col d-flex flex-column">
+                      <label for="delete-form-rule-type">Rule Type</label>
+                      <select class="form-control" name="delete-form-rule-type" id="delete-form-rule-type">
+                          <option>INPUT</option>
+                          <option>FORWARD</option>
+                          <option>OUTPUT</option>
+                      </select>
+                    </div>
                   </div>
                   <button id="delete-btn" type="button" class="btn btn-primary mt-2 ">Delete</button>
                 </div>
