@@ -1,3 +1,4 @@
+import { createTable } from '../utils/dom-utils.js';
 import { fetchLogs } from '../utils/log-utils.js';
 
 window.onload = () => {
@@ -6,25 +7,14 @@ window.onload = () => {
 
 async function loadData() {
     const logs = await fetchLogs();
-    const logsTable = await createLogsTable(logs);
+    const headers = ["Log description"];
+    try {
+        const logsTable = createTable({headers: headers, rows: logs});
+        const tableDiv = document.getElementById("logsTable");
+        tableDiv.appendChild(logsTable);
+    } catch(err) {
+        console.log(err);
+    }
 
-    const tableDiv = document.getElementById("logsTable");
-    tableDiv.innerHTML = logsTable;
-    tableDiv.removeChild(tableDiv.childNodes[0]);
-}
-
-
-async function createLogsTable(logs) {
-    const logsAdapted = await logs.map((l, idx) => {
-        return `<tr><td>${idx}</td><td>${l}</td></tr>`;
-    });
-    return `<table class='table table-striped text-white'>
-        <thead>
-            <th scope="col">Index</th>
-            <th scope="col">Log description</th>
-        </thead>
-        <tbody>
-        ${logsAdapted}
-        </tbody>
-    </table>`;
+    //tableDiv.removeChild(tableDiv.childNodes[0]);
 }

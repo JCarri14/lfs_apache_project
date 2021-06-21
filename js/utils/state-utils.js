@@ -8,7 +8,6 @@ export async function getCurrentUser() {
         method: "GET",
     });
 
-    console.log(res);
     if (res.isSuccessful) {
         return res.data.user;
     }

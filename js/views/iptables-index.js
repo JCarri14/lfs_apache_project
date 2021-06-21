@@ -1,4 +1,5 @@
-import { fetchIptables } from '../utils/iptables-utils.js';
+import { fetchIptables, createRule } from '../utils/iptables-utils.js';
+import { createTable } from '../utils/dom-utils.js';
 
 window.onload = () => {
     loadData();
@@ -52,50 +53,12 @@ function normalizeRules(rules) {
 }
 
 async function createChainsTables(chains) {
+    const headers = ["Index", "Target", "Protocol", "Opt", "Source", "Destination"]
     const tables = [];
     Object.keys(chains).forEach(key => {
-        tables.push(createSingleTable(chains[key]));
+        tables.push(createTable({ headers: headers, rows: chains[key], showIndex: false}));
     });
     return tables;
-}
-
-function createSingleTable(rules) {
-    const tableParent = document.createElement('table');
-    tableParent.classList.add("table", "table-striped", "text-white");
-
-    const tableRows = rules.map((rule, idx) => {
-        return createTableRow(rule);
-    });
-   
-    const tableBody = document.createElement('tbody');
-    tableRows.forEach((row) => {
-        tableBody.appendChild(row);
-    });
-    
-    const tableHead = document.createElement('thead');
-    const headers = ["Index", "Target", "Protocol", "Opt", "Source", "Destination"]
-    headers.forEach((h) => {
-        const headerItem = document.createElement("th");
-        headerItem.innerText = h;
-        tableHead.appendChild(headerItem);
-    })
-
-    tableParent.appendChild(tableHead);
-    tableParent.appendChild(tableBody);
-    return tableParent;
-}
-
-function createTableRow(rule) {
-    if (rule.length > 0) {
-        let htmlRow = document.createElement("tr");
-        rule.forEach((e) => {
-            const tData = document.createElement("td");
-            tData.innerText = e;
-            htmlRow.appendChild(tData);
-        });
-        return htmlRow;
-    }
-    return "";
 }
 
 
@@ -107,6 +70,7 @@ async function handleRuleCreation() {
     notificationDiv.innerHTML = "";
 
     // Todo: obtained inputs and make request
+    const res = await createRule();
 
     notificationDiv.innerHTML = res.data.created ? res.data.message:"";
     errorDiv.innerHTML = (!res.data.created || !res.isSuccessful) ? res.data.message:"";

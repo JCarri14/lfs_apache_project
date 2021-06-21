@@ -67,9 +67,12 @@ async function handleUserRemoval() {
     const delUser = document.getElementById("delete-form-username").value;
 
     const res = await removeUser(delUser);
-
-    notificationDiv.innerHTML = res.data.deleted ? res.data.message:"";
-    errorDiv.innerHTML = (!res.data.deleted || !res.isSuccessful) ? res.data.message:"";
+    console.log("Remove data response");
+    console.log(res);
+    if (res.data) {
+        notificationDiv.innerHTML = res.data.deleted ? res.data.message:"";
+        errorDiv.innerHTML = (!res.data.deleted || !res.isSuccessful) ? res.data.message:"";
+    }
 
     document.getElementById("delete-close-btn").click();
 }
