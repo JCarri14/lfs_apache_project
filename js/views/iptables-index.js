@@ -1,4 +1,4 @@
-import { fetchIptables, createRule } from '../utils/iptables-utils.js';
+import { fetchIptables, createRule, removeRule } from '../utils/iptables-utils.js';
 import { createTable } from '../utils/dom-utils.js';
 
 window.onload = () => {
@@ -69,11 +69,31 @@ async function handleRuleCreation() {
     errorDiv.innerHTML = "";
     notificationDiv.innerHTML = "";
 
-    // Todo: obtained inputs and make request
-    const res = await createRule();
+    const values = getAddRuleParams();
+    const res = await createRule(values);
 
-    notificationDiv.innerHTML = res.data.created ? res.data.message:"";
-    errorDiv.innerHTML = (!res.data.created || !res.isSuccessful) ? res.data.message:"";
+    if (!res.error) {
+        notificationDiv.innerHTML = res.data.created ? res.data.message:"";
+    } else {
+        errorDiv.innerHTML = (!res.data.created || !res.isSuccessful) ? res.data.message:"";
+    }
+
+}
+
+function getAddRuleParams() {
+    const ruleSelector = document.getElementById("add-form-rule-type"); 
+    const rule = ruleSelector.options[ruleSelector.selectedIndex].value;
+
+    const actionSelector = document.getElementById("add-form-target");
+    const action = actionSelector.options[actionSelector.selectedIndex].value;
+
+    const protocol = document.getElementById("add-form-protocol").value;
+    const port = document.getElementById("add-form-port").value;
+    const origin = document.getElementById("add-form-origin").value;
+    const destination = document.getElementById("add-form-dst").value;
+
+    console.log({rule, action, protocol, port, origin, destination});
+    return {rule, action, protocol, port, origin, destination};
 }
 
 async function handleRuleRemoval() {
@@ -83,8 +103,22 @@ async function handleRuleRemoval() {
     errorDiv.innerHTML = "";
     notificationDiv.innerHTML = "";
 
-    // Todo: Obtain input and make request
+    const values = getRemoveRuleParams();
+    const res = await removeRule(values);
 
-    document.getElementById("delete-close-btn").click();
+    if (!res.error) {
+        notificationDiv.innerHTML = res.data.created ? res.data.message:"";
+    } else {
+        errorDiv.innerHTML = (!res.data.created || !res.isSuccessful) ? res.data.message:"";
+    }
+
+}
+
+function getRemoveRuleParams() {
+    const ruleSelector = document.getElementById("delete-form-rule-type"); 
+    const rule = ruleSelector.options[ruleSelector.selectedIndex].value;
+
+    const id = document.getElementById("delete-form-id").value;
+    return {rule, id};
 }
 
