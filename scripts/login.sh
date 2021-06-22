@@ -14,7 +14,7 @@ isValid=$( ./check-credentials.sh "$user" "$pswd")
 
 if [ $isValid = "true" ]; then
     $(echo $user > currentUser.txt);
-    logger -p local1.info "$user logged in!"
+    logger -p local1.info "[ServerAccess] $user logged in!"
 else
     logger -p local1.info "Someone tried to access as $user, but failed!"
 fi
