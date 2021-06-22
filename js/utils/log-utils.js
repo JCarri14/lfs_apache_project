@@ -1,6 +1,6 @@
 import { request } from "./api-utils.js";
 
-const logsURL = "http://localhost/scripts/log-list.sh";
+const logsURL = "http://localhost/scripts/lists/log-list.sh";
 
 export async function fetchLogs() {
     const res = await request({

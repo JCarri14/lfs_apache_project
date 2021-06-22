@@ -1,10 +1,10 @@
 import { request } from "./api-utils.js";
 import { getCurrentUser } from "./state-utils.js";
 
-const processesURL = "http://localhost/scripts/process-list.sh";
-const detailsURL = "http://localhost/scripts/process-state.sh";
-const stopURL = "http://localhost/scripts/process-stop.sh";
-const removeURL = "http://localhost/scripts/process-remove.sh";
+const processesURL = "http://localhost/scripts/process/process-list.sh";
+const detailsURL = "http://localhost/scripts/process/process-state.sh";
+const stopURL = "http://localhost/scripts/process/process-stop.sh";
+const removeURL = "http://localhost/scripts/process/process-remove.sh";
 
 export async function fetchProcesses() {
     const res = await request({

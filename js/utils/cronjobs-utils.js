@@ -1,9 +1,9 @@
 import { request } from "./api-utils.js";
 import { getCurrentUser } from "./state-utils.js";
 
-const cronjobsURL = "http://localhost/scripts/cronjobs-list.sh";
-const createTaskURL = "http://localhost/scripts/cronjobs-create.sh";
-const deleteTaskURL = "http://localhost/scripts/cronjobs-delete.sh";
+const cronjobsURL = "http://localhost/scripts/cronjobs/cronjobs-list.sh";
+const createTaskURL = "http://localhost/scripts/cronjobs/cronjobs-create.sh";
+const deleteTaskURL = "http://localhost/scripts/cronjobs/cronjobs-delete.sh";
 
 export async function fetchCronjobs() {
     const res = await request({

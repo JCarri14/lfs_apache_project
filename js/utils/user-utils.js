@@ -1,9 +1,9 @@
 import { request } from "./api-utils.js";
 import { getCurrentUser } from "./state-utils.js";
 
-const usersURL = "http://localhost/scripts/user-list.sh";
-const createUserURL = "http://localhost/scripts/user-create.sh";
-const deleteUserURL = "http://localhost/scripts/user-delete.sh";
+const usersURL = "http://localhost/scripts/user/user-list.sh";
+const createUserURL = "http://localhost/scripts/user/user-create.sh";
+const deleteUserURL = "http://localhost/scripts/user/user-delete.sh";
 
 export async function fetchUsers() {
     const res = await request({

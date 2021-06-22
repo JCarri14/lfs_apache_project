@@ -1,6 +1,6 @@
 import { request } from "./api-utils.js";
 
-const loginURL = "http://localhost/scripts/login.sh";
+const loginURL = "http://localhost/scripts/auth/login.sh";
 
 export async function loginFormHandler(e) {
     e.preventDefault();

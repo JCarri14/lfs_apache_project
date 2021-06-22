@@ -1,6 +1,6 @@
 import { request } from "./api-utils.js";
 
-const monitorURL = "http://localhost/scripts/monitoring.sh";
+const monitorURL = "http://localhost/scripts/lists/monitoring.sh";
 
 export async function fetchMonitorData() {
     const res = await request({

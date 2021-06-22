@@ -60,19 +60,3 @@ echo -e '{
     ],
     "time": "'"$time_data"'"
 }'
-
-# echo -e '{
-#     "cpuData": [
-#        '"$cpu_data"'
-#    ],
-#    "diskData": [
-#        '"$disk_data"'
-#    ],
-#     "memData": [
-#        '"$mem_data"'
-#    ],
-#    "accessData": [
-#        '"$access_data"'
-#    ],
-#    "time": '"$time_data"' 
-# }'

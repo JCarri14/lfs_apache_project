@@ -1,7 +1,7 @@
 import { request } from "./api-utils.js";
 import { getCurrentUser } from "./state-utils.js";
 
-const ipTablesURL = "http://localhost/scripts/iptables-list.sh";
+const ipTablesURL = "http://localhost/scripts/lists/iptables-list.sh";
 //const createUserURL = "http://localhost/scripts/user-create.sh";
 //const deleteUserURL = "http://localhost/scripts/user-delete.sh";
 
